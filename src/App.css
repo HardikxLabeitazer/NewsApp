@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+/* Maintop */
+.sidebars{
+  margin-top:250px;
+  padding:50px;
+}
+
+.mainpage{
+  display: flex;
+  justify-content:center;
+}
+
+.mycard{
+  box-shadow: 10px 10px 10px 10px rgb(255, 255, 255);
+}
+
+.mycard:hover{
+  box-shadow: 5px 20px 25px 5px rgb(222, 219, 219);
+  transition: 0.5s;
+}
+.myinfo{
+  color:rgb(108, 101, 101);
+}
+.myinfo:hover{
+  color:black;
+}
+
+.readmore{color:red}
+.readmore:hover{
+  
+  background: rgb(239, 72, 72);
+  color:white;
+  transition:0.4s;
+  box-shadow: 2px 2px 15px 2px rgb(170, 126, 126);
+  font-weight: 500;
+}
+

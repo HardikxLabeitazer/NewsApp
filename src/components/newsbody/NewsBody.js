@@ -19,7 +19,7 @@ export class NewsBody extends Component {
     }
      updateNews=async ()=>{
         document.title = "EveryDay-News"
-        const url = `https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=6afdc30f902148d0a74db6e2ddddd83d&page=${this.state.page+1 }&pageSize=${this.state.pageResults}`
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6afdc30f902148d0a74db6e2ddddd83d&page=${this.state.page+1 }&pageSize=${this.state.pageResults}`
         let data = await fetch(url);
         let parseData = await data.json();
 
@@ -33,7 +33,7 @@ export class NewsBody extends Component {
     fetchMoreData = async () => {
         
         this.setState({page:this.state.page +1})
-        const url = `https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=6afdc30f902148d0a74db6e2ddddd83d&page=${this.state.page+1}&pageSize=${this.state.pageResults}`
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6afdc30f902148d0a74db6e2ddddd83d&page=${this.state.page+1}&pageSize=${this.state.pageResults}`
        
         let data = await fetch(url);
         let parseData = await data.json();
@@ -49,6 +49,7 @@ export class NewsBody extends Component {
 
             <>
                 <h1 className='text-center my-2'>Latest News</h1>
+
                 <InfiniteScroll
                     dataLength={this.state.articles.length}
                     next={this.fetchMoreData}
@@ -63,7 +64,7 @@ export class NewsBody extends Component {
                                     return <div className='col-md-4' key={element.url}>
                                         <Newsmodel title={element.title ? element.title.slice(0, 40) + "......" : ""}
                                             description={element.description ? element.description.slice(0, 80) : ""}
-                                            imageUrl={element.urlToImage} newsUrl={element.url} date={element.publishedAt}
+                                            imageUrl={element.urlToImage?element.urlToImage:"https://images.indianexpress.com/2022/05/Invisible-barriers-space-milky-way-other-galaxies.jpg"} newsUrl={element.url} date={element.publishedAt}
                                         />
 
                                     </div>
